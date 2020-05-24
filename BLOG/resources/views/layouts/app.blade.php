@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -72,9 +72,27 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <li class="list-group">
+                    <li class="list-group-item">
+                        <a href="/home"> Home </a>
+
+                    <li class="list-group-item">
+
+                        <a href="/post/create"> Create New post</a>
+
+                    </li>
+                </div>
+                <div class="col-lg-8"></div>
+                @yield('content')
+
+
+
+            </div>
+        </div>
     </div>
 </body>
 </html>
