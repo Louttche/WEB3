@@ -76,6 +76,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
+                    <br>
                     <li class="list-group">
                     <li class="list-group-item">
                         <a href="/home"> Home </a>
@@ -86,8 +87,9 @@
 
                     </li>
                 </div>
-                <div class="col-lg-8"></div>
+                <div class="col-lg-8">
                 @yield('content')
+                </div>
 
 
 
