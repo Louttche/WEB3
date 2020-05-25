@@ -40,6 +40,7 @@ class PostsController extends Controller
             'content'=> 'required'
 
         ]);
+        dd($request->all());
     }
 
     /**

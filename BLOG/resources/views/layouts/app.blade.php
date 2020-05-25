@@ -81,7 +81,8 @@
 
                     <ul class="list-group">
                     <li class="list-group-item">
-                        <a href="{{route('home') }}"> Home </a></li>
+                       <a href="{{route('home')}}">Home</a>
+                        </li>
 
 
                         <li class="list-group-item">
