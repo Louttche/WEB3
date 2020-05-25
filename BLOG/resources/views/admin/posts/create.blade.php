@@ -19,7 +19,7 @@
         Create a new post!
     </div>
     <div class="panel-body">
-        <form action="{{ route('post.store') }}" method="post">
+        <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data" >
 {{csrf_field()}}
 
 
