@@ -1,98 +1,75 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-
-Auth::routes();
-
-
-
-
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
-{
-
-
-    Route::get('/home', [
-        'uses'=>'HomeController@index',
-        'as'=>'home'
-        ]);
-
-    Route::get('/post/create', [
-        'uses'=>'PostsController@create',
-        'as'=>'post.create'
-
-    ]);
-
-
-
-    Route::post('/post/store', [
-        'uses'=>'PostsController@store',
-        'as'=>'post.store'
-
-    ]);
-
-
-    Route::get('/category/create', [
-        'uses'=>'CategoriesController@create',
-        'as'=>'category.create'
+Route::get('/', [
+    'uses' => 'PostController@getIndex',
+    'as' => 'blog.index'
 ]);
 
+Route::get('post/{id}', [
+    'uses' => 'PostController@getPost',
+    'as' => 'blog.post'
+]);
 
-    Route::get('/categories', [
-        'uses'=>'CategoriesController@index',
-        'as'=>'categories'
+Route::get('post/{id}/like', [
+    'uses' => 'PostController@getLikePost',
+    'as' => 'blog.post.like'
+]);
+
+Route::get('about', function () {
+    return view('other.about');
+})->name('other.about');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('', [
+        'uses' => 'PostController@getAdminIndex',
+        'as' => 'admin.index'
     ]);
 
-
-
-    Route::post('/category/store',[
-        'uses' => 'CategoriesController@store',
-        'as' => 'category.store'
+    Route::get('create', [
+        'uses' => 'PostController@getAdminCreate',
+        'as' => 'admin.create'
     ]);
 
-
-    Route::get('/category/edit{id}',[
-        'uses' => 'CategoriesController@edit',
-        'as' => 'category.edit'
+    Route::post('create', [
+        'uses' => 'PostController@postAdminCreate',
+        'as' => 'admin.create'
     ]);
 
-
-    Route::get('/category/delete{id}',[
-        'uses' => 'CategoriesController@destroy',
-        'as' => 'category.delete'
+    Route::get('edit/{id}', [
+        'uses' => 'PostController@getAdminEdit',
+        'as' => 'admin.edit'
     ]);
 
-
-
-    Route::post('/category/update/{id}',[
-        'uses' => 'CategoriesController@update',
-        'as' => 'category.update'
+    Route::get('delete/{id}', [
+        'uses' => 'PostController@getAdminDelete',
+        'as' => 'admin.delete'
     ]);
- 
 
+    Route::post('edit', [
+        'uses' => 'PostController@postAdminUpdate',
+        'as' => 'admin.update'
+    ]);
+    Route::get('profile', function(){
+        return view('admin.profile');
+    })->name('admin.profile');
 
 });
+Auth::routes();
 
+Route::post('login', [
+    'uses' => 'SigninController@signin',
+    'as' => 'auth.signin'
+]);
 
-
-//Auth::routes();
-//
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/admin/profile/update', 'ProfileController@updateProfile')->name('profile.update');
