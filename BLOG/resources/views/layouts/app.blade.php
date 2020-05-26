@@ -7,17 +7,24 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Blogo') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="toastr.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+    <!-- <link rel ="stylesheet" href="{{asset('/css/toastr.min.css')}}"> -->
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
+
+    <!-- <link href="toastr.css" rel="stylesheet"/> -->
 </head>
 <body>
     <div id="app">
@@ -117,5 +124,34 @@
             </div>
         </div>
     </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="/js/app.js"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+    <!-- <script src=" {{asset('js/toastr.min.js')}}"></script> -->
+
+
+
+<script>
+@if(Session::has('success'))
+
+toastr.suceess("{{ Session::get('success')}}")
+
+
+
+@endif 
+</script>
+
+
+
+
+
+
+
 </body>
 </html>
+ 

@@ -96,6 +96,7 @@
       <path value="$PROJECT_DIR$/BLOG/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/BLOG/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/BLOG/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/BLOG/vendor/yoeunes/toastr" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
