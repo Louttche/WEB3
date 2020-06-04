@@ -17,7 +17,7 @@
     @foreach($posts as $post)
         <div class="row">
             <div class="col-md-12">
-                <p><strong>{{ $post->title }}</strong>
+                <p><strong><a href="{{ route('blog.post', ['id' => $post ->id]) }}">{{ $post->title }}</a></strong>
                 @if (auth()->user()->id === $post->user_id)
                     <a href="{{ route('admin.edit', ['id' => $post ->id]) }}">Edit</a>
                     <a href="{{ route('admin.delete', ['id' => $post ->id]) }}">Delete</a>       
