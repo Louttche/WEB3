@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
- 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+
 class ProfileController extends Controller
 {
     use UploadTrait;
@@ -34,7 +36,7 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
  
         // Check if a profile image has been uploaded
-        if ($request->has('profile_image')) {
+        if ($request->hasfile('profile_image')) {
             // Get image file
             $image = $request->file('profile_image');
             // Make a image name based on user name and current timestamp
@@ -44,7 +46,8 @@ class ProfileController extends Controller
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
+            $image->move(public_path('storage/uploads/images'), $name . "." . $image->getClientOriginalExtension());
+            //$this->uploadOne($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
             $user->profile_image = 'storage'. $filePath;
         }
