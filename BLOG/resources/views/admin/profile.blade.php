@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Profile</div>
+                    <div class="card-header">Profile</div>                    
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -49,7 +49,10 @@
                                             <div class="col-md-6">
                                                 <input id="profile_image" type="file" class="form-control" name="profile_image">
                                                 @if (auth()->user()->image)
+                                                <div style="padding-top: 20px;">
+                                                    <img src="{{asset(auth()->user()->image)}}" style="width: 80px; height: 80px; border-radius: 50%;">    
                                                     <code>{{ auth()->user()->image }}</code>
+                                                </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -70,6 +73,3 @@
 
 
 @endsection
-
-
-
