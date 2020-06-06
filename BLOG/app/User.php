@@ -46,7 +46,5 @@ class User extends Authenticatable
     public function getimageAttribute(){
         return $this->profile_image;
     }
-
-
 }
 

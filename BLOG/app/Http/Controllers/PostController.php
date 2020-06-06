@@ -54,13 +54,31 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|min:5',
-            'content' => 'required|min:10'
+            'content' => 'required|min:10',
         ]);
+
         $user = Auth::user();
         $post = new Post([
             'title' => $request->input('title'),
-            'content' => $request->input('content')
+            'content' => $request->input('content'),
         ]);
+
+        // Check if a cover image has been uploaded
+        if ($request->hasfile('cover_image')) {
+            // Get image file
+            $image = $request->file('cover_image');
+            // Make an image name based on post title and current timestamp
+            $name = str_slug($request->input('title')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/post_images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $image->move(public_path('storage/uploads/post_images'), $name . "." . $image->getClientOriginalExtension());
+            // Set post cover image path in database to filePath if there is one
+            $post->cover_image = 'storage'. $filePath;
+        }
+
         $user->posts()->save($post);
         $post->tags()->attach($request->input('tags') === null ? [] : $request->input('tags'));
 

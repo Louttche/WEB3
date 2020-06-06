@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'cover_image'];
 
     public function likes()
     {
@@ -28,5 +28,9 @@ class Post extends Model
 
     public function getTitleAttribute($value) {
         return strtoupper($value);
+    }
+
+    public function getimageAttribute(){
+        return $this->cover_image;
     }
 }

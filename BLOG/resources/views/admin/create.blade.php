@@ -4,7 +4,7 @@
     @include('partials.errors')
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('admin.create') }}" method="post">
+            <form action="{{ route('admin.create') }}" method="post" role="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" name="title">
@@ -12,6 +12,10 @@
                 <div class="form-group">
                     <label for="content">Content</label>
                     <input type="text" class="form-control" id="content" name="content">
+                </div>
+                <div class="form-group">
+                    <label for="cover_image">Cover Image</label>
+                    <input id="cover_image" type="file" class="form-control" name="cover_image">
                 </div>
                 @foreach($tags as $tag)
                     <div class="checkbox">
