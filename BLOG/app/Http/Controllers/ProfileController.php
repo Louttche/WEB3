@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -37,16 +37,18 @@ class ProfileController extends Controller
  
         // Check if a profile image has been uploaded
         if ($request->hasfile('profile_image')) {
+            if ($user->profile_image)
+                File::delete($user->profile_image);
             // Get image file
             $image = $request->file('profile_image');
             // Make a image name based on user name and current timestamp
             $name = str_slug($request->input('name')).'_'.time();
             // Define folder path
-            $folder = '/uploads/images/';
+            $folder = '/uploads/profile_images/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image
-            $image->move(public_path('storage/uploads/images'), $name . "." . $image->getClientOriginalExtension());
+            $image->move(public_path('storage/uploads//profile_images'), $name . "." . $image->getClientOriginalExtension());
             //$this->uploadOne($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
             $user->profile_image = 'storage'. $filePath;

@@ -8,6 +8,7 @@ use App\Tag;
 use Auth;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -110,6 +111,10 @@ class PostController extends Controller
         if (Gate::denies('manipulate-post', $post)) {
             return redirect()->back();
         }
+
+        //TO-DO: Delete the images saved locally as well
+        File::delete($post->cover_image);
+
         $post->likes()->delete();
         $post->tags()->detach();
         $post->delete();
