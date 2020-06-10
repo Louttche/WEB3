@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('importExportView', 'ExcelController@importExportView');
-
 Route::get('export', 'ExcelController@export')->name('export');
 
 Route::post('import', 'ExcelController@import')->name('import');

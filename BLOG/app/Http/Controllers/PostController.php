@@ -23,7 +23,7 @@ class PostController extends Controller
     public function getAdminIndex()
     {
         $posts = Post::orderBy('title', 'asc')->get();
-        return view('admin.index', ['posts' => $posts]);
+        return view('admin.index', ['posts' => $posts, 'noFileMsg' => ""]);
     }
 
     public function getPost($id)
@@ -64,6 +64,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $tags = Tag::all();
+
         return view('admin.edit', ['post' => $post, 'postId' => $id, 'tags' => $tags]);
     }
 
