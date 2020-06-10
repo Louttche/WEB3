@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Like;
 use App\Post;
+use App\User;
 use App\Tag;
 use Auth;
 use Gate;
@@ -28,7 +29,8 @@ class PostController extends Controller
     public function getPost($id)
     {
         $post = Post::where('id', $id)->with('likes')->first();
-        return view('blog.post', ['post' => $post]);
+        $users = User::all();
+        return view('blog.post', ['post' => $post, 'users' => $users]);
     }
 
     public function getLikePost($id)

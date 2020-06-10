@@ -13,12 +13,16 @@ class PostTableSeeder extends Seeder
     {
         $post = new App\Post([
             'title' => 'Let Go',
-            'content' =>'Tell us your secrets']);
+            'content' => 'Tell us your secrets',
+            'user_id' => 1
+        ]);
         $post->save();
 
         $post = new App\Post([
             'title' => 'Let Go Again ',
-            'content' =>'I solemnly swear I am upto no Good']);
+            'content' =>'I solemnly swear I am upto no Good',
+            'user_id' => 1
+        ]);
         $post->save();
 
     }

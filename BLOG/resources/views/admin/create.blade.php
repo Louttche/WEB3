@@ -17,6 +17,7 @@
                     <label for="cover_image">Cover Image</label>
                     <input id="cover_image" type="file" class="form-control" name="cover_image">
                 </div>
+                <label>tags:</label>
                 @foreach($tags as $tag)
                     <div class="checkbox">
                         <label>

@@ -4,6 +4,13 @@
     <div class="row">
         <div class="col-md-12">
             <p class="quote">{{ $post->title }}</p>
+            @foreach ($users as $user)
+                @if($user->id === $post->user_id)
+                    <p>Author: {{$user->name}} </p>    
+                    @break
+                @endif
+            @endforeach
+            
         </div>
     </div>
     <div class="row">

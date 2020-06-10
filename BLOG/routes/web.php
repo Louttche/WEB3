@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('importExportView', 'ExcelController@importExportView');
+
+Route::get('export', 'ExcelController@export')->name('export');
+
+Route::post('import', 'ExcelController@import')->name('import');
+
 Route::get('/', [
     'uses' => 'PostController@getIndex',
     'as' => 'blog.index'
