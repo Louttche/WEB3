@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use Auth;
 use Gate;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -33,8 +34,21 @@ class PostController extends Controller
     public function getLikePost($id)
     {
         $post = Post::where('id', $id)->first();
-        $like = new Like();
-        $post->likes()->save($like);
+        $savedlike = DB::table('likes')
+                        ->where('post_id', '=', $post->id)
+                        ->where('user_id', '=', Auth::user()->id)
+                        ->get();
+        if (count($savedlike) <= 0){
+            $like = new Like();
+            $like->user_id = Auth::user()->id;
+            $post->likes()->save($like);   
+        }
+        return redirect()->back();
+    }
+
+    public function unlikePost($id){
+        $like = Like::where('id', $id)->first();
+        $like->delete();
         return redirect()->back();
     }
 

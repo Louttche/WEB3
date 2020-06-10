@@ -26,6 +26,11 @@ Route::get('post/{id}/like', [
     'as' => 'blog.post.like'
 ]);
 
+Route::get('post/{id}/unlike', [
+    'uses' => 'PostController@unlikePost',
+    'as' => 'blog.post.unlike'
+]);
+
 Route::get('about', function () {
     return view('other.about');
 })->name('other.about');

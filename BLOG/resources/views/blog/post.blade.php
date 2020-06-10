@@ -21,7 +21,21 @@
     <div class="row">
         <div class="col-md-12" style="padding-top:40px;">
             <p>{{ count($post->likes) }} Likes |
-                <a href="{{ route('blog.post.like', ['id' => $post->id]) }}">Like</a></p>
+            @php ($found = false)
+            @php ($likeid = 0)
+            @foreach ($post->likes as $like)                
+                @if ($like->user_id === auth()->user()->id)
+                    @php ($found = true)
+                    @php ($likeid = $like->id)
+                    @break
+                @endif
+            @endforeach
+            @if ($found === true)
+                <a href="{{ route('blog.post.unlike', ['id' => $likeid]) }}">unlike</a>
+            @else
+                <a href="{{ route('blog.post.like', ['id' => $post->id]) }}">like</a>
+            @endif
+            </p>
         </div>
     </div>
 @endsection
