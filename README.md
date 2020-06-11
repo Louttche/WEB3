@@ -1,5 +1,4 @@
 
-
 This is an introductory project from school where we learn the fundamentals of Laravel. The module focuses on front-end (HTML, CSS, JavaScript and PHP) development. We will study state-of-the-art approaches of front-end and back-end web development. During this course groupe members will build a front-end and back-end of a web application using Laravel.
 
 This project will be done in 7 weeks. in additions the carry out by two members namely Lokesk and Dimitri
@@ -31,6 +30,9 @@ The technologies used in this project can be fine with the following sources and
 * The last  tool will bee use in the development stage.
 * The code sample will be provided and shared at the development stage
 
+##Deployment
+
+The project's last branch build is live on: https://web3-laravel-7.herokuapp.com/
 
 ## Contributing:
 
