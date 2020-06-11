@@ -17,6 +17,11 @@ post-title {
     display: block;
 }
 
+.centerblock{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 /* .usernameHeader {
 
     display: inline-block;

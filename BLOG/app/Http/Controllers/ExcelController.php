@@ -28,9 +28,9 @@ class ExcelController extends Controller
         if(request()->hasFile('file'))
             Excel::import(new UsersImport,request()->file('file'));
         else{
-            return view('admin.index', ['posts' => $posts, 'noFileMsg' => "No file selected."]);
+            return view('admin.profile', ['posts' => $posts, 'noFileMsg' => "No file selected."]);
         }
 
-        return view('admin.index', ['posts' => $posts, 'noFileMsg' => ""]);
+        return view('admin.profile', ['posts' => $posts, 'noFileMsg' => ""]);
     }
 }

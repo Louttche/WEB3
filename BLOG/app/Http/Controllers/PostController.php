@@ -24,7 +24,7 @@ class PostController extends Controller
     public function getAdminIndex()
     {
         $posts = Post::orderBy('title', 'asc')->get();
-        return view('admin.index', ['posts' => $posts, 'noFileMsg' => ""]);
+        return view('admin.index', ['posts' => $posts]);
     }
 
     public function getPost($id)

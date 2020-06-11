@@ -27,18 +27,4 @@
             </div>
         </div>
     @endforeach
-    <div style="padding-top: 30px">
-        <label> Import/Export Users in Excel </label>
-        <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="file" class="form-control">
-            <br>
-            <button class="btn btn-success">Import</button>
-            <a class="btn btn-warning" href="{{ route('export') }}">Export</a>
-            @if ($noFileMsg)
-                {{ $noFileMsg }}
-            @endif
-        </form>
-    </div>
-
 @endsection

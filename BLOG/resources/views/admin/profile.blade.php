@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Profile</div>                    
+                    <div class="card-header" style="padding-bottom:30px">Profile</div>                    
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -62,6 +62,19 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <div style="padding-top: 10%">
+                                            <label> Import/Export Users in Excel </label>
+                                            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="file" name="file" class="form-control">
+                                                <br>
+                                                <button class="btn btn-success">Import</button>
+                                                <a class="btn btn-warning" href="{{ route('export') }}">Export</a>
+                                                @if ($noFileMsg ?? '')
+                                                    {{ $noFileMsg }}
+                                                @endif
+                                            </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
