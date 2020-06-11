@@ -12,8 +12,13 @@
 */
 
 Route::get('export', 'ExcelController@export')->name('export');
-
 Route::post('import', 'ExcelController@import')->name('import');
+
+// Route::get('createPDF', 'PostController@storePDF')->name('createPDF');
+Route::get('storePDF/{id}', [
+    'uses' => 'PostController@storePDF',
+    'as' => 'blog.post.storePDF'
+]);
 
 Route::get('/', [
     'uses' => 'PostController@getIndex',

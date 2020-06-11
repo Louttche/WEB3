@@ -22,10 +22,14 @@
                         </form>
                     </li>
                     <li><a href="{{ route('admin.profile') }}">Profile</a></li>
-                    <li class="active" style="position:fixed;right:0;width:100px;"> <a>
-                    @if (auth()->user()->image)
-                        <img src="{{ asset(auth()->user()->image) }}" style="width: 20px; height: 20px; border-radius: 50%;">
-                    @endif {{ Auth::user()->name }} </a></li>
+                    <li class="active" style="position:fixed;right:0;width:flex;">
+                        <a>
+                            @if (auth()->user()->image)
+                                <img src="{{ asset(auth()->user()->image) }}" style="width: 20px; height: 20px; border-radius: 50%;">
+                            @endif
+                            {{ Auth::user()->name }}
+                        </a>
+                     </li>
                 @endif
             </ul>
         </div>

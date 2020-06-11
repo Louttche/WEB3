@@ -9,6 +9,7 @@ use App\Tag;
 use Auth;
 use Gate;
 use DB;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -136,5 +137,12 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
         return redirect()->route('admin.index')->with('info', 'Post deleted!');
+    }
+
+    public function storePDF($id){
+        $post = Post::find($id);
+        $pdf = PDF::loadView('blog.pdf', compact('post'));
+        
+        return $pdf->download('downloaded_Post.pdf');
     }
 }

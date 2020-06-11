@@ -16,3 +16,18 @@ post-title {
     margin-bottom: 100px;
     display: block;
 }
+
+/* .usernameHeader {
+
+    display: inline-block;
+    width: 3em;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+    /* Add 3 dots at the end of an unfinished name*/
+    /* text-overflow: ellipsis; */
+*/
+
+p {
+    font-size: 1.2vw;
+}

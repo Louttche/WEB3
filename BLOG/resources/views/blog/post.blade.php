@@ -44,5 +44,8 @@
             @endif
             </p>
         </div>
+        <div class="col-md-12" style="padding-top:40px; padding-bottom:8%;">
+            <a href="{{ route('blog.post.storePDF', ['id' => $post->id]) }}"> Save as PDF </a>
+        </div>
     </div>
 @endsection
