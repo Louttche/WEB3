@@ -41,6 +41,10 @@ or any other method with the owners of this repository before making a change. A
 
 Lokesh Agnihotri, And Dimitri are the authors of this project.
 
+## Online Access
+
+The Blog website can be accessed at  : (http://web3-laravel-7.herokuapp.com/)
+
 
 
 ## License:
