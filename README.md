@@ -39,7 +39,7 @@ or any other method with the owners of this repository before making a change. A
 
 ## Authors:
 
-Lokesh Agnihotri, And Dimitri are the authors of this project.
+Lokesh Agnihotri, kathy and Dimitri are the authors of this project.
 
 ## Online Access
 
